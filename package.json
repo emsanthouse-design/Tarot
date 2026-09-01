@@ -1,0 +1,16 @@
+{
+  "name": "tarot-revue",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Tarot Revue — design tokens and self-contained widgets for Tarot HQ.",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node build/build.mjs",
+    "check": "node build/embed-font.mjs --check && node build/build.mjs --check && node --test \"build/*.test.mjs\"",
+    "embed-font": "node build/embed-font.mjs",
+    "test": "node --test \"build/*.test.mjs\""
+  }
+}

@@ -1,0 +1,138 @@
+/* The Tarot Revue — design tokens
+   Single source of truth. Nothing in this repo hardcodes a color.
+   Spec: docs/design-system.md
+   Audit of this file against the spec: docs/tokens-audit.md */
+
+:root {
+
+  /* ---- Grounds ----------------------------------------------------
+     Grounds are surfaces, not accents. A ground should occupy the
+     majority of any composition. */
+
+  --ground-hunter:    #1D3B31;  /* deep theatrical green — primary dark */
+  --ground-sage:      #9DBCA6;  /* dusty gray-green — primary light */
+  --ground-olive:     #6B7355;  /* warm mid — must not drift brown */
+  --ground-navy:      #16233F;  /* night as cloth, not outer space */
+  --ground-crimson:   #B12737;  /* stage curtain red */
+  --ground-oxblood:   #4A0F17;  /* crimson with weight */
+
+  /* ---- Metallic ---------------------------------------------------
+     Gold is structural, not decorative. Old brass and dull gilt —
+     never champagne luxury. */
+
+  --gold:             #E3C080;  /* stars, rules, trim, punctuation */
+  --brass:            #C9A227;  /* hardware, frames, borders */
+
+  /* ---- Interruption -----------------------------------------------
+     ONE per composition. If a second appears, one of them is wrong. */
+
+  --shout-pink:       #D9548A;
+  --shout-orange:     #FD7336;
+
+  /* ---- Neutrals ---------------------------------------------------- */
+
+  --ink:              #1A1614;  /* warm near-black — reads printed */
+  --cream:            #F4EBDC;  /* paper */
+  --cream-shade:      #D8CDBA;  /* hairlines on cream */
+
+  /* Ink as channels, so alpha can be taken from it without a second
+     source of truth. Only for shadows and washes — never a new color. */
+  --ink-rgb:          26, 22, 20;
+
+  /* Ink laid lighter on paper: 65% ink / 35% cream. Derived, not new.
+     5.19:1 on --cream, so it carries 13px captions at AA. */
+  --ink-thin:         #66615A;
+
+  /* ---- Semantic aliases -------------------------------------------
+     Widgets should reference these, not the raw palette above, so a
+     palette change propagates. */
+
+  --surface:          var(--ground-hunter);
+  --surface-alt:      var(--ground-navy);
+  --paper:            var(--cream);
+  --text:             var(--ink);
+  --text-on-dark:     var(--cream);
+  --text-muted:       var(--ink-thin);     /* on --paper */
+  --text-muted-on-dark: var(--ground-sage);/* 5.91 on hunter, 7.56 on navy */
+  --rule:             var(--brass);
+  --rule-hairline:    var(--cream-shade);
+  --star:             var(--gold);
+  --accent:           var(--shout-pink);
+
+  /* ---- Type -------------------------------------------------------
+     Three roles. Do not add a fourth.
+     Tarot Regular: cover titles, major titles, section openers only.
+     Max two appearances per view. Never body, never UI, never tables. */
+
+  --font-display:  "Tarot", ui-serif, Georgia, serif;
+  --font-serif:    "Fraunces", "Newsreader", Georgia, serif;
+  --font-sans:     "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+
+  /* Fraunces variable axes. Spec §2: wonk on at display sizes, off for
+     body. Inert on the fallback faces, so it is safe to set either way. */
+  --fraunces-display: "SOFT" 0, "WONK" 1;
+  --fraunces-body:    "SOFT" 0, "WONK" 0;
+
+  --size-cover:    3.5rem;   /* 56px — display only */
+  --size-cover-lg: 4.5rem;   /* 72px — top of the spec range, footlights */
+  --size-h1:       2.125rem; /* 34px */
+  --size-h2:       1.5rem;   /* 24px */
+  --size-h3:       1.125rem; /* 18px */
+  --size-body:     1rem;     /* 16px */
+  --size-small:    0.8125rem;/* 13px */
+  --size-label:    0.6875rem;/* 11px */
+
+  /* Weights from the spec §2 scale table. */
+  --weight-h1:     600;
+  --weight-h2:     600;
+  --weight-h3:     500;
+  --weight-body:   400;
+  --weight-small:  400;
+  --weight-label:  500;
+
+  --leading-body:  1.65;
+  --leading-small: 1.5;
+  --leading-tight: 1.25;
+
+  --track-cover:    0.02em;
+  --track-h1:      -0.01em;
+  --track-small:    0.01em;
+  --track-label:    0.08em;
+
+  /* ---- Space ------------------------------------------------------
+     Base unit 8px. Use only these steps. */
+
+  --space-1:  0.5rem;   /*  8 */
+  --space-2:  1rem;     /* 16 */
+  --space-3:  1.5rem;   /* 24 */
+  --space-4:  2.5rem;   /* 40 */
+  --space-5:  4rem;     /* 64 */
+
+  --margin-doc:    var(--space-5);
+  --margin-narrow: var(--space-4);
+  --gutter:        1.5rem;
+  --grid-columns:  12;
+
+  /* ---- Structure --------------------------------------------------
+     Radius is 0 everywhere. Everything in this system is printed,
+     cut, or draped. Nothing is a rounded app card. */
+
+  --radius:        0;
+  --border-width:  1px;
+  --hairline:      0.5px;
+
+  /* ---- Material ---------------------------------------------------
+     Spec §3/§4. Deliberate misregistration on decorative layers only,
+     never on text. Shadows imply a real object with a light on it —
+     they are not a UI effect. */
+
+  --misregister-1: 2px;
+  --misregister-2: 4px;
+
+  --shadow-object: 3px 4px 0 rgba(var(--ink-rgb), 0.22);
+  --shadow-lifted: 5px 7px 0 rgba(var(--ink-rgb), 0.18);
+}
+
+/* Grounds are opaque and do not invert. This system has one mode:
+   the room, lit the way the room is lit. If a widget must sit on an
+   unknown host background (Notion), it paints its own ground. */

@@ -1,0 +1,26 @@
+# Netlify publishes the built widgets. Nothing else in the repo is served.
+
+[build]
+  command = "npm run build"
+  publish = "widgets"
+
+# Notion embeds point at /embed/<name>; the same widget is bookmarkable at
+# /<name>. Both serve the file rather than redirecting, so the URL she saved
+# stays the URL she sees.
+[[redirects]]
+  from = "/embed/:name"
+  to = "/:name.html"
+  status = 200
+
+[[redirects]]
+  from = "/:name"
+  to = "/:name.html"
+  status = 200
+
+# Widgets are single self-contained files that change when they are rebuilt.
+# Short cache so a fix reaches a bookmarked tab, revalidation so it is cheap.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"

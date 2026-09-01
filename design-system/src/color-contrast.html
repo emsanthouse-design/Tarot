@@ -1,0 +1,27 @@
+<!-- @dsCard group="Color" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contrast</title>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="_card.css">
+</head>
+<body data-card="contrast">
+  <header class="card-head">
+    <p class="label">Color &middot; Computed, not estimated</p>
+    <h1>Contrast</h1>
+  </header>
+  <p class="card-note">WCAG 2.1 ratios calculated in the page from the resolved token values. Body copy wants 4.5, large text and rules want 3. The failures are not all bugs &mdash; brass on cream is hardware, not type &mdash; but nothing should fail by accident.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Foreground</th><th>Ground</th><th class="num">Ratio</th><th>Body 4.5</th><th>Large 3.0</th><th>Intended for</th></tr></thead>
+      <tbody data-render></tbody>
+    </table>
+  </div>
+
+  <p class="card-foot" data-fonts></p>
+  <script src="_card.js"></script>
+</body>
+</html>

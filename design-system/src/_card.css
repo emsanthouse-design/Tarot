@@ -1,0 +1,173 @@
+/* Shared chrome for the Claude Design cards.
+
+   A partial: linked by every card page, inlined at build time, never built on
+   its own. Each card paints its own ground because it is rendered inside a
+   host that knows nothing about this system.
+
+   Every value here comes from tokens.css. */
+
+* { box-sizing: border-box; }
+
+html { background: var(--paper); }
+
+body {
+  margin: 0;
+  padding: var(--space-4);
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--size-body);
+  font-weight: var(--weight-body);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (max-width: 640px) { body { padding: var(--space-2); } }
+
+/* ---- Card header ----
+   The eyebrow says which group the card belongs to; the rule under it is the
+   same brass rule that separates sections everywhere else in the system. */
+
+.card-head {
+  border-bottom: var(--border-width) solid var(--rule);
+  padding-bottom: var(--space-1);
+  margin-bottom: var(--space-3);
+}
+
+.card-head h1 {
+  font-family: var(--font-serif);
+  font-variation-settings: var(--fraunces-display);
+  font-size: var(--size-h1);
+  font-weight: var(--weight-h1);
+  letter-spacing: var(--track-h1);
+  line-height: var(--leading-tight);
+  margin: var(--space-1) 0 0;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: var(--size-label);
+  font-weight: var(--weight-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  line-height: var(--leading-tight);
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.card-note {
+  font-family: var(--font-sans);
+  font-size: var(--size-small);
+  font-weight: var(--weight-small);
+  letter-spacing: var(--track-small);
+  line-height: var(--leading-small);
+  color: var(--text-muted);
+  max-width: 64ch;
+  margin: var(--space-2) 0 var(--space-3);
+}
+
+code { font-size: 0.95em; }
+
+/* ---- Swatches ----
+   Chips are objects with a light on them. Radius 0, hard-edged shadow. */
+
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: var(--gutter);
+}
+
+.chip { margin: 0; }
+
+.chip-block {
+  height: 4.5rem;
+  background: var(--swatch);
+  border: var(--border-width) solid var(--rule-hairline);
+  box-shadow: var(--shadow-object);
+  border-radius: var(--radius);
+}
+
+.chip-name {
+  font-size: var(--size-small);
+  font-weight: var(--weight-label);
+  letter-spacing: var(--track-small);
+  margin-top: var(--space-1);
+}
+
+.chip-meta {
+  font-size: var(--size-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.chip-use {
+  font-size: var(--size-small);
+  line-height: var(--leading-small);
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+/* ---- Tables ----
+   Sans, hairlines, no rounding. A boring table is allowed to be usable. */
+
+.table-wrap { overflow-x: auto; }
+.table-wrap table { min-width: 32rem; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--size-small);
+  line-height: var(--leading-small);
+  letter-spacing: var(--track-small);
+}
+
+th {
+  text-align: left;
+  font-size: var(--size-label);
+  font-weight: var(--weight-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0 var(--space-2) var(--space-1) 0;
+  border-bottom: var(--border-width) solid var(--rule);
+  white-space: nowrap;
+}
+
+td {
+  padding: var(--space-1) var(--space-2) var(--space-1) 0;
+  border-bottom: var(--hairline) solid var(--rule-hairline);
+  vertical-align: baseline;
+}
+
+td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+.verdict {
+  font-weight: var(--weight-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  font-size: var(--size-label);
+}
+.verdict[data-pass="no"] { color: var(--accent); }
+
+.swatch-dot {
+  display: inline-block;
+  width: 2.5rem;
+  height: 1rem;
+  border: var(--hairline) solid var(--rule-hairline);
+  border-radius: var(--radius);
+}
+
+/* ---- Footer ----
+   Says which faces actually arrived. Two of the three are not embedded yet,
+   and a design system that quietly documents Georgia is worse than useless. */
+
+.card-foot {
+  margin-top: var(--space-4);
+  padding-top: var(--space-2);
+  border-top: var(--hairline) solid var(--rule-hairline);
+  font-size: var(--size-label);
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}

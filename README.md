@@ -53,6 +53,42 @@ are known to actually catch something.
 The colour check reads declaration values only, so a comment or a class named
 `.olive` is not a violation.
 
+## Design system cards
+
+`design-system/src/` builds the same tokens into one page per card for a
+Claude Design design-system project. Nine cards in four groups:
+
+| Group | Cards |
+|---|---|
+| Color | Grounds, Metallic, Interruption, Neutrals, Semantic aliases, Contrast |
+| Type | Type scale |
+| Space | Space |
+| Material | Structure and material |
+
+Each card reads its values off `tokens.css` at load and computes its own
+contrast ratios, so a card cannot drift from the token file. Files beginning
+with `_` are partials — `_card.css` and `_card.js` are shared by every card and
+inlined at build time, never built on their own.
+
+Claude Design indexes a card from an `@dsCard` comment on the **first line** of
+the file, so the build keeps that line first and puts its own banner
+underneath. `build/build.test.mjs` asserts this, because a banner sitting on
+top of the marker would break the import without anything looking wrong.
+
+Only `type-scale.html` embeds Tarot Regular; the other eight have no use for it
+and stay around 21 KB.
+
+### Pushing them
+
+The `DesignSync` tool writes to claude.ai/design, and it needs authorization
+this repo cannot grant on its own:
+
+1. Create the project **as a design system**. The type is fixed at creation —
+   pushing files into an ordinary project never converts it.
+2. Authorize a session: run `/design-login` once from an interactive Claude
+   Code session, or use Claude Design's *Send to Claude Code Web*.
+3. Build, then push `design-system/*.html`.
+
 ## Widgets
 
 - `token-specimen.html` — every token rendered from `tokens.css` at load, with

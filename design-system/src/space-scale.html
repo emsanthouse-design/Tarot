@@ -1,0 +1,36 @@
+<!-- @dsCard group="Space" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Space</title>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  .space-row {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: var(--space-2);
+    align-items: center;
+    padding: var(--space-1) 0;
+  }
+  .space-bar {
+    height: var(--space-1);
+    background: var(--surface);
+    border-radius: var(--radius);
+  }
+</style>
+</head>
+<body data-card="space">
+  <header class="card-head">
+    <p class="label">Space &middot; Base unit 8px</p>
+    <h1>Space</h1>
+  </header>
+  <p class="card-note">Five steps: 8, 16, 24, 40, 64. Anything between them is a mistake. Document margins are 64px, 40px at mobile widths; the grid is 12 columns with a 24px gutter.</p>
+  <div data-render></div>
+
+  <p class="card-foot" data-fonts></p>
+  <script src="_card.js"></script>
+</body>
+</html>

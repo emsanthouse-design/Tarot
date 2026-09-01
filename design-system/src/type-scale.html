@@ -1,0 +1,48 @@
+<!-- @dsCard group="Type" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Type scale</title>
+<link rel="stylesheet" href="../../tokens.css">
+<link rel="stylesheet" href="../../fonts/tarot-font-embed.css">
+<link rel="stylesheet" href="_card.css">
+<style>
+  /* Each level rendered at its real size, family, weight and tracking.
+     This is the only card that loads the display face, and it uses it once. */
+
+  .specimen-row {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: var(--space-2);
+    align-items: baseline;
+    padding: var(--space-2) 0;
+    border-bottom: var(--hairline) solid var(--rule-hairline);
+  }
+  @media (max-width: 640px) {
+    .specimen-row { grid-template-columns: 1fr; gap: var(--space-1); }
+  }
+  .specimen-line { min-width: 0; }
+
+  .t-cover { font-family: var(--font-display); font-size: var(--size-cover); letter-spacing: var(--track-cover); line-height: var(--leading-tight); }
+  .t-h1    { font-family: var(--font-serif); font-variation-settings: var(--fraunces-display); font-size: var(--size-h1); font-weight: var(--weight-h1); letter-spacing: var(--track-h1); line-height: var(--leading-tight); }
+  .t-h2    { font-family: var(--font-serif); font-variation-settings: var(--fraunces-display); font-size: var(--size-h2); font-weight: var(--weight-h2); line-height: var(--leading-tight); }
+  .t-h3    { font-family: var(--font-serif); font-variation-settings: var(--fraunces-display); font-size: var(--size-h3); font-weight: var(--weight-h3); line-height: var(--leading-tight); }
+  .t-body  { font-family: var(--font-serif); font-variation-settings: var(--fraunces-body); font-size: var(--size-body); font-weight: var(--weight-body); line-height: var(--leading-body); }
+  .t-small { font-size: var(--size-small); font-weight: var(--weight-small); letter-spacing: var(--track-small); line-height: var(--leading-small); }
+  .t-label { font-size: var(--size-label); font-weight: var(--weight-label); letter-spacing: var(--track-label); text-transform: uppercase; }
+</style>
+</head>
+<body data-card="type">
+  <header class="card-head">
+    <p class="label">Type &middot; Three roles, never a fourth</p>
+    <h1>Type scale</h1>
+  </header>
+  <p class="card-note">Tarot Regular is a display face: cover titles, major titles, section openers, and at most two appearances in a view. Fraunces carries editorial. IBM Plex Sans carries everything informational, which is why this note and every label on every card is set in it.</p>
+  <div data-render></div>
+
+  <p class="card-foot" data-fonts data-display></p>
+  <script src="_card.js"></script>
+</body>
+</html>
